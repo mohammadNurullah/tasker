@@ -6,7 +6,7 @@ export default function Hero() {
           <div className="flex justify-center md:order-2">
             <img
               className="max-md:w-full"
-              src={"/public/frame.png"}
+              src={"/frame.png"}
               width="326"
               height="290"
               alt="frame"

@@ -4,11 +4,7 @@ export default function Navbar() {
       <div className="container mx-auto flex items-center justify-between gap-x-6 pl-20">
         {/* <!-- Logo --> */}
         <a href="#">
-          <img
-            className="h-[45px]"
-            src={"/public/lws-logo-en.svg"}
-            alt="Logo"
-          />
+          <img className="h-[45px]" src={"/lws-logo-en.svg"} alt="Logo" />
         </a>
         {/* <!-- Logo Ends --> */}
       </div>
