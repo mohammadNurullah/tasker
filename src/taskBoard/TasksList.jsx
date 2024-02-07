@@ -1,6 +1,6 @@
 import { FaStar } from "react-icons/fa";
 
-export default function TasksList({ tasks }) {
+export default function TasksList({ tasks, onEdit, onDelete, onFav }) {
   return (
     <div className="overflow-auto">
       <table className="table-fixed overflow-auto xl:w-full">
@@ -31,13 +31,18 @@ export default function TasksList({ tasks }) {
         </thead>
         <tbody>
           {tasks.map((task) => (
-            <tr className="border-b border-[#2E3443] [&>td]:align-baseline [&>td]:px-4 [&>td]:py-2">
+            <tr
+              key={task.id}
+              className="border-b border-[#2E3443] [&>td]:align-baseline [&>td]:px-4 [&>td]:py-2"
+            >
               <td>
-                {task.isFavourate ? (
-                  <FaStar color="yellow" />
-                ) : (
-                  <FaStar color="gray" />
-                )}
+                <button onClick={() => onFav(task.id)}>
+                  {task.isFavorite ? (
+                    <FaStar color="yellow" />
+                  ) : (
+                    <FaStar color="gray" />
+                  )}
+                </button>
               </td>
               <td>{task.title}</td>
               <td>
@@ -46,7 +51,7 @@ export default function TasksList({ tasks }) {
               <td>
                 <ul className="flex justify-center gap-1.5 flex-wrap">
                   {task.tags.map((tag) => (
-                    <li>
+                    <li key={tag}>
                       <span className="inline-block h-5 whitespace-nowrap rounded-[45px] bg-[#00D991A1] px-2.5 text-sm capitalize text-[#F4F5F6]">
                         {tag}
                       </span>
@@ -57,8 +62,18 @@ export default function TasksList({ tasks }) {
               <td className="text-center">{task.priority}</td>
               <td>
                 <div className="flex items-center justify-center space-x-3">
-                  <button className="text-red-500">Delete</button>
-                  <button className="text-blue-500">Edit</button>
+                  <button
+                    onClick={() => onDelete(task.id)}
+                    className="text-red-500"
+                  >
+                    Delete
+                  </button>
+                  <button
+                    onClick={() => onEdit(task)}
+                    className="text-blue-500"
+                  >
+                    Edit
+                  </button>
                 </div>
               </td>
             </tr>
